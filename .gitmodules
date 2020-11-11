@@ -1,6 +1,0 @@
-[submodule "ortener"]
-	path = ortener
-	url = https://github.com/mirsella/ortener
-[submodule "tutubedl"]
-	path = tutubedl
-	url = https://github.com/mirsella/tutubedl
