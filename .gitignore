@@ -1,0 +1,14 @@
+plugged
+*log
+.zcomp*
+*gpg
+ssl
+*.git
+*bak
+novnc
+id_rsa*
+*key
+*pub
+token/
+*token
+node_modules

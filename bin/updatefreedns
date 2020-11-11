@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/curl -k "https://freedns.afraid.org/dynamic/update.php?$(cat ~/.config/token/freedns.token)="

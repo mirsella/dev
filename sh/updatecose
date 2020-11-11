@@ -1,0 +1,41 @@
+#!/usr/bin/env python
+import os, re
+
+def fsearch(page, linein, nbrin):
+    nbrwait = 0
+    for line in page:
+        if re.search(linein, line):
+            nbrwait += 1
+            if nbrwait == nbrin:
+                return line.strip()
+
+def cosedownload():
+    global githubcoseversion
+
+    filename = 'code-server{numversion}-vsc{vsversion}-linux-arm64'.format(numversion=githubcoseversion[0], vsversion=githubcoseversion[1])
+    urldownload = 'https://github.com/cdr/code-server/releases/download/{numversion}/{filename}.tar.gz'.format(numversion=githubcoseversion[0], filename=filename)
+
+    print('\nNow downloading ', urldownload)
+    os.system('wget {urldownload} -q --show-progress'.format(urldownload=urldownload))
+    print('untar /tmp/code-server.tar.gz...')
+    os.system('tar -xf /tmp/{filename}'.format(filename=filename))
+    os.system('cp -f /tmp/{filename}/code-server /HDD/dev/usrbin/code-server'.format(filename=filename))
+
+
+os.system('wget https://api.github.com/repos/cdr/code-server/releases/latest -O /tmp/code-server-latest.html -q --show-progress')
+
+page = open('/tmp/code-server-latest.html', "r")
+githubcoseversion = fsearch(page, "name", 3).strip('"name :,').split('-vsc')
+
+coseversion = os.popen('/HDD/dev/usrbin/code-server -v').read().split('info')
+coseversion = coseversion[1].strip(' \n').split('-vsc')
+
+print('code-server version : ', coseversion)
+print('latest github version : ', githubcoseversion)
+
+if coseversion[0].replace('.', '') < githubcoseversion[0].replace('.', ''):
+    cosedownload()
+elif coseversion[0].replace('.', '') >= githubcoseversion[0].replace('.', ''):
+    print('code-server is already up to date')
+else:
+    print('error')

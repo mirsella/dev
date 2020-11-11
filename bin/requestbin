@@ -1,0 +1,11 @@
+#!/bin/sh
+data="$(curl -s ifconfig.me)
+$(uptime | sed 's/^ //')
+$(date)
+
+$(free -h)
+
+$(systemctl status updatefreedns.service)"
+
+echo "$(date)"
+curl -d "$data" -H "Content-Type: application/plain" https://$(cat ~/.config/token/requestbin.token).x.pipedream.net/
