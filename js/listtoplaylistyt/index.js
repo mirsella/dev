@@ -1,6 +1,6 @@
-const fs = require('fs');
-const ytdl = require('ytdl-core');
 const ytsr = require('youtube-sr');
+require('dotenv').config()
+const yt = require('youtube-api')
 
 const list = `
 Shape of Lies (Thomas-Adam Habuda)
@@ -22,17 +22,31 @@ Yearning Hearts (Bianca Ban)
 Providence (Bianca Ban)
 Fate of the Clockmaker (Flynn Hase Spence)
 The Ritual (Cyrus Reynolds)
-The Game is Afoot (Neal Acree)
-`
-fs.mkdir('audios')
+The Game is Afoot (Neal Acree)`
+
+
+yt.authenticate({
+  type: "oauth",
+  token: process.env.key
+  // memo : https://developers.google.com/oauthplayground/
+});
 for (video of list.trim().split('\n')) {
   ytsr.search(video)
     .then(videos => {
       console.log(videos[0].title)
-      // .pipe(fs.createWriteStream(videos[0].title));
-      ytdl(videos[0].id, {
-        format: 'mp3',
-        filter: 'audioonly',
-      }).pipe(fs.createWriteStream('audios/'+videos[0].title.replace('/', ' ', 'g')+'.mp3'));
+      yt.playlistItems.insert({
+        part: 'id,snippet',
+        resource: {
+          snippet: {
+            playlistId:"PLnYA0n5BTNscRlnFBkNGJrCyKdOqGtID9",
+            resourceId:{
+              videoId:videos[0].id,
+              kind:"youtube#video"
+            }
+          }
+        }
+      }, function (err, data) {
+        console.log(err, data);
+      });
     })
 }
