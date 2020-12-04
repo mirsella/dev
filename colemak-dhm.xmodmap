@@ -61,8 +61,9 @@ keycode  65  =  space         space        space                 nobreakspace
 keycode 108 =  Mode_switch Mode_switch
 
 ! Remove these 2 lines if you want caps lock unmodified
-keycode 66 =  BackSpace BackSpace BackSpace BackSpace
-clear Lock
+! i already have them modified in my .zshrc
+! keycode 66 = BackSpace BackSpace BackSpace BackSpace
+! clear Lock
 
 !clear Shift
 !clear Control
