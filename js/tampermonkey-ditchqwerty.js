@@ -11,22 +11,19 @@
 (function() {
     'use strict';
 
-// one to left
-changeLayout(layoutList[currentLayoutIndex-1].innerHTML);
-currentLayoutIndex--;
-current = document.querySelector(".js-"+currentLayout);
-
-// to right
-changeLayout(layoutList[currentLayoutIndex+1].innerHTML);
-currentLayoutIndex++;
-current = document.querySelector(".js-"+currentLayout);
+// select colemak-dhm
+  // one to left
+  changeLayout(layoutList[currentLayoutIndex-1].innerHTML);
+  currentLayoutIndex--;
+  current = document.querySelector(".js-"+currentLayout);
+  // to right
+  changeLayout(layoutList[currentLayoutIndex+1].innerHTML);
+  currentLayoutIndex++;
+  current = document.querySelector(".js-"+currentLayout);
 
 // custom settigs
 wordLimitModeInput.value = 30
 scoreMax = 30
-
-// reload
-reset()
-
+document.getElementsByClassName('lvl5')[0].click()
 
 })();
