@@ -1,0 +1,6 @@
+{
+	"dependencies": {
+		"ytdl-core": "^4.4.0",
+		"youtube-sr": "^2.0.5"
+	}
+}

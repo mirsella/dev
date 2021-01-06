@@ -1,6 +1,7 @@
 const fs = require('fs');
 const ytdl = require('ytdl-core');
 const ytsr = require('youtube-sr');
+// memos : next time just use youtube-dl 'ytsearch:youtube name'
 
 const list = `
 Shape of Lies (Thomas-Adam Habuda)
