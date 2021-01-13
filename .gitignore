@@ -12,3 +12,4 @@ id_rsa*
 token/
 *token
 node_modules
+tapo/
