@@ -11,4 +11,5 @@ id_rsa*
 *pub
 token/
 *token
-node_modules
+node_modules/
+tapo/
