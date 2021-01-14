@@ -65,6 +65,12 @@ keycode 108 =  Mode_switch Mode_switch
 ! keycode 66 = BackSpace BackSpace BackSpace BackSpace
 ! clear Lock
 
+! swap capslock and backspace
+remove Lock = Caps_Lock
+keysym BackSpace = Caps_Lock
+keysym Caps_Lock = BackSpace
+add Lock = Caps_Lock
+
 !clear Shift
 !clear Control
 !clear Mod1

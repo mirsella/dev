@@ -1,0 +1,6 @@
+#!/bin/sh
+curl -i -s -k -X $'POST' \
+    -H $'Referer: http://192.168.1.100:80' -H $'Accept: application/json' -H $'requestByApp: true' -H $'Content-Type: application/json; charset=UTF-8' -H $'Content-Length: 232' -H $'Host: 192.168.1.100' -H $'Connection: close' -H $'Accept-Encoding: gzip, deflate' -H $'User-Agent: okhttp/3.12.12' \
+    -b $'TP_SESSIONID=C7F2E7F1EEC17EC07AD03AD030D090D0' \
+    --data-binary $'{\"method\":\"securePassthrough\",\"params\":{\"request\":\"SFhLuRplhD8lvgp92+wk+y4hAOStOz5A4O+NLdhaInwLG7w7xXsxQppB8xZzL0whqzK6AOaLnLSZ\\na01ScFK6Rv0EsRuw1B5ORARYYRFFMS2BulvB+h4u4bXQHTMcZVNRTLpPU9fvup2H6JyJNbqm8RTH\\nzp7MehPyCNcxVc1bY5Q=\\n\"}}' \
+    $'http://192.168.1.100/app?token=CD711F6C39BC50BACBDA7FD93AE968E8'
