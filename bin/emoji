@@ -1,0 +1,4 @@
+#!/bin/zsh
+source /home/mirsella/.config/zsh/.zshrc
+[ ! -f ~/.cache/emoji.txt ] && (curl https://raw.githubusercontent.com/mirsella/emoji-selector/master/emoji.txt -o ~/.cache/emoji.txt || echo "couldn't get the emoji list")
+cat ~/.cache/emoji.txt | rofi -dmenu | cut -d' ' -f1 | xargs -r xdotool type
