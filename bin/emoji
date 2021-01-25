@@ -1,4 +1,4 @@
-#!/bin/zsh
-source /home/mirsella/.config/zsh/.zshrc
+#!/bin/sh
+LANG=en_US.UTF-8
 [ ! -f ~/.cache/emoji.txt ] && (curl https://raw.githubusercontent.com/mirsella/emoji-selector/master/emoji.txt -o ~/.cache/emoji.txt || echo "couldn't get the emoji list")
-cat ~/.cache/emoji.txt | rofi -dmenu | cut -d' ' -f1 | xargs -r xdotool type
+cat ~/.cache/emoji.txt | rofi -dmenu -i -l 30 | cut -d' ' -f1 | xargs -r -I % sh -c 'xdotool type "%"; xclip -in -selection clipboard <<< "%"'
