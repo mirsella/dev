@@ -1,2 +1,4 @@
+#!/bin/sh
 xmodmap ~/.config/zsh/lib/colemak-dhm.xmodmap
+sleep 1
 xmodmap ~/.config/zsh/lib/swapbackcap.xmodmap
