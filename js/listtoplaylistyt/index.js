@@ -3,26 +3,21 @@ require('dotenv').config()
 const yt = require('youtube-api')
 
 const list = `
-Shape of Lies (Thomas-Adam Habuda)
-Revolution (Piotr Musial)
-Reach (Axl Rosenberg feat. Merethe Soltvedt)
-Redemption (Axl Rosenberg)
-The Last Funeral (Nitish Raina)
-Born from Ashes (Axl Rosenberg)
-Afterlight (Piotr Musial)
-Dawn of Faith (Thomas-Adam Habuda)
-Theory of Light (Thomas-Adam Habuda)
-Hidden Machinations (Cyrus Reynolds)
-Dirt and Fire (Piotr Musial)
-Forgotten Odes (Bianca Ban)
-Cloak and Dagger (Bianca Ban)
-Autumn Moon (Neal Acree)
-True Love's Last Kiss (Thomas-Adam Habuda)
-Yearning Hearts (Bianca Ban)
-Providence (Bianca Ban)
-Fate of the Clockmaker (Flynn Hase Spence)
-The Ritual (Cyrus Reynolds)
-The Game is Afoot (Neal Acree)`
+Wolfgang Lohr & Offbeat feat. Nina Zeitlin – Swing In Spring
+Peggy Suave – Keep A-Knockin’
+Swingrowers – Butterfly
+Electro Velvet – Take Me Home (feat. Lone Sharx)
+Gani Tamir – Night And Day
+Bart&Baker feat. Antoine Villoutreix – Ami (AK Remix)
+Intended Immigration – We’ve Got What You Want (Wolfgang Lohr Remix)
+Annella – Kisse Misse
+Balduin & Wolfgang Lohr – Whoopsy Daisy
+Fedde Le Grand & Josh Cumbee – Dancing Shoes
+Swingrowers – No Strings Attached
+Jamie Berry feat. Octavia Rose – Light up the Night
+Kitten And The Hip – No Strings
+Minimatic – Joe’s Break
+ProleteR – What Lana Says`
 
 
 yt.authenticate({
@@ -31,22 +26,21 @@ yt.authenticate({
   // memo : https://developers.google.com/oauthplayground/
 });
 for (video of list.trim().split('\n')) {
-  ytsr.search(video)
-    .then(videos => {
-      console.log(videos[0].title)
-      yt.playlistItems.insert({
-        part: 'id,snippet',
-        resource: {
-          snippet: {
-            playlistId:"PLnYA0n5BTNscRlnFBkNGJrCyKdOqGtID9",
-            resourceId:{
-              videoId:videos[0].id,
-              kind:"youtube#video"
+    ytsr.search(video)
+      .then(videos => {
+        yt.playlistItems.insert({
+          part: 'id,snippet',
+          resource: {
+            snippet: {
+              playlistId:"PLnYA0n5BTNscRlnFBkNGJrCyKdOqGtID9",
+              resourceId:{
+                videoId:videos[0].id,
+                kind:"youtube#video"
+              }
             }
           }
-        }
-      }, function (err, data) {
-        console.log(err, data);
-      });
-    })
+        }, function (err, data) {
+          console.log(err, data);
+        });
+      })
 }
