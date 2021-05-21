@@ -1,3 +1,0 @@
-#!/bin/sh
-setxkbmap fr
-xmodmap ~/.config/zsh/lib/swapbackcap.xmodmap
